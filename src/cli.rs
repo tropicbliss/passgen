@@ -1,10 +1,9 @@
 use ansi_term::Colour::{Blue, Green, Yellow};
 use ansi_term::Style;
-use clipboard::{ClipboardContext, ClipboardProvider};
+use copypasta::{ClipboardContext, ClipboardProvider};
 use std::{
-    error,
     fs::OpenOptions,
-    io::{self, Write},
+    io::{Write, Error},
 };
 
 pub struct Password {
@@ -24,13 +23,12 @@ impl Password {
         );
     }
 
-    pub fn copy_to_clipboard(&self) -> Result<(), Box<dyn error::Error>> {
-        let mut ctx: ClipboardContext = ClipboardProvider::new()?;
-        ctx.set_contents(self.password.to_owned())?;
-        Ok(())
+    pub fn copy_to_clipboard(&self) {
+        let mut ctx = ClipboardContext::new().unwrap();
+        ctx.set_contents(self.password.to_owned()).expect("error copying to clipboard");
     }
 
-    pub fn save_password(&self) -> Result<(), io::Error> {
+    pub fn save_password(&self) -> Result<(), Error> {
         #[cfg(windows)]
         const LINE_ENDING: &str = "\r\n";
         #[cfg(not(windows))]

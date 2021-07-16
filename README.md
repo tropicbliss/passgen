@@ -20,7 +20,7 @@ Run file
 
 | Short | Long              | Description                     |
 | ----- | ----------------- | ------------------------------- |
-| -l    | --length <number> | length of password (default: 8) |
+| -l    | --length <number> | length of password [default: 8] |
 | -s    | --save            | save password to passwords.txt  |
 |       | --no-numbers      | remove numbers                  |
 |       | --no-symbols      | remove symbols                  |

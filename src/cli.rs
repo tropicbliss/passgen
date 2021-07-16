@@ -25,7 +25,7 @@ impl Password {
 
     pub fn copy_to_clipboard(&self) {
         let mut ctx = ClipboardContext::new().unwrap();
-        ctx.set_contents(self.password.to_owned()).expect("error copying to clipboard");
+        ctx.set_contents(self.password.clone()).expect("error copying to clipboard");
     }
 
     pub fn save_password(&self) -> Result<(), Error> {

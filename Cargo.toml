@@ -13,3 +13,7 @@ ansi_term = "0.12"
 clipboard = "0.5"
 rand = "0.8"
 structopt = "0.3"
+
+[profile.release]
+lto = true
+codegen-units = 1

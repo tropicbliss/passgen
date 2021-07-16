@@ -8,7 +8,7 @@ use std::{
 
 pub fn print_version() {
     const VERSION: &'static str = env!("CARGO_PKG_VERSION");
-    println!("passgen {}", VERSION);
+    println!("{}", VERSION);
 }
 
 pub fn print_generated_password(password: &str) {

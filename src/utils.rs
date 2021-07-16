@@ -1,38 +1,30 @@
-use argh::FromArgs;
 use rand::{thread_rng, Rng};
+use structopt::StructOpt;
 
-#[derive(FromArgs)]
 /// Simple Password Generator
+#[derive(StructOpt, Debug)]
+#[structopt(name = "passgen")]
 pub struct Args {
-    /// output the version number
-    #[argh(switch, short = 'V')]
-    version: bool,
-
-    /// length of password (default: "8")
-    #[argh(option, short = 'l', default = "8")]
+    /// length of password
+    #[structopt(short, long, default_value = "8")]
     length: usize,
 
     /// save password to passwords.txt
-    #[argh(switch, short = 's')]
+    #[structopt(short, long)]
     pub save: bool,
 
     /// remove numbers
-    #[argh(switch)]
+    #[structopt(long)]
     no_numbers: bool,
 
     /// remove symbols
-    #[argh(switch)]
+    #[structopt(long)]
     no_symbols: bool,
 }
 
 impl Args {
-    pub fn parse_args() -> Option<Self> {
-        let options: Args = argh::from_env();
-        if options.version {
-            None
-        } else {
-            Some(options)
-        }
+    pub fn parse_args() -> Self {
+        Args::from_args()
     }
 
     pub fn generate_password(&self) -> String {

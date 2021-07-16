@@ -9,7 +9,7 @@ description = "Simple password generator"
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
-argh = "0.1"
+ansi_term = "0.12"
 clipboard = "0.5"
-colored = "2.0"
 rand = "0.8"
+structopt = "0.3"

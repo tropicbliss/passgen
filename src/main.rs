@@ -23,7 +23,7 @@ fn main() {
     if options.save {
         
         // Save to file
-        cli::save_password(&password).expect("error saving password");
+        cli::save_password(&password).expect("error saving password to file");
         
         cli::save_success_prompt();
     }

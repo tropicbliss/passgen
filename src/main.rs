@@ -18,7 +18,7 @@ fn main() {
     cli::clipboard_success_prompt();
     if options.save {
         // Save to file
-        cli.save_password().expect("error saving password to file");
+        cli.save_password();
 
         cli::save_success_prompt();
     }

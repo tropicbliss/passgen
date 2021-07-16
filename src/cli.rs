@@ -7,11 +7,11 @@ use std::{
     io::{self, Write},
 };
 
-pub struct CLI {
+pub struct Password {
     password: String,
 }
 
-impl CLI {
+impl Password {
     pub fn new(password: String) -> Self {
         Self { password }
     }
@@ -30,10 +30,6 @@ impl CLI {
         Ok(())
     }
 
-    pub fn clipboard_success_prompt(&self) {
-        println!("{}", Yellow.paint("Password copied to clipboard"));
-    }
-
     pub fn save_password(&self) -> Result<(), io::Error> {
         #[cfg(windows)]
         const LINE_ENDING: &str = "\r\n";
@@ -47,8 +43,12 @@ impl CLI {
         file.write_all(write_data.as_bytes())?;
         Ok(())
     }
+}
 
-    pub fn save_success_prompt(&self) {
-        println!("{}", Green.paint("Password saved to passwords.txt"));
-    }
+pub fn clipboard_success_prompt() {
+    println!("{}", Yellow.paint("Password copied to clipboard"));
+}
+
+pub fn save_success_prompt() {
+    println!("{}", Green.paint("Password saved to passwords.txt"));
 }

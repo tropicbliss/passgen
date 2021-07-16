@@ -10,7 +10,7 @@ description = "Simple password generator"
 
 [dependencies]
 ansi_term = "0.12"
-clipboard = "0.5"
+copypasta = "0.7"
 rand = "0.8"
 structopt = "0.3"
 

@@ -28,10 +28,10 @@ impl Args {
     }
 
     pub fn generate_password(&self) -> String {
-        let length = self.length;
+        let password_len = self.length;
         let char_array = self.generate_char_array();
         let mut rng = thread_rng();
-        (0..length)
+        (0..password_len)
             .map(|_| {
                 char_array.choose(&mut rng).unwrap().to_owned() as char
             })

@@ -24,5 +24,5 @@ Run file
 | -s    | --save            | save password to passwords.txt  |
 |       | --no-numbers      | remove numbers                  |
 |       | --no-symbols      | remove symbols                  |
-|       | --help            | display usage information       |
+| -h    | --help            | display usage information       |
 | -V    | --version         | Show the version                |

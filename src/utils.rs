@@ -3,7 +3,7 @@ use structopt::StructOpt;
 
 /// Simple Password Generator
 #[derive(StructOpt, Debug)]
-#[structopt(name = "passgen")]
+#[structopt()]
 pub struct Args {
     /// length of password
     #[structopt(short, long, default_value = "8")]

@@ -1,4 +1,4 @@
-use rand::{thread_rng, Rng};
+use rand::{thread_rng, seq::SliceRandom};
 use structopt::StructOpt;
 
 /// Simple Password Generator
@@ -31,13 +31,11 @@ impl Args {
         let length = self.length;
         let char_array = self.generate_char_array();
         let mut rng = thread_rng();
-        let password: String = (0..length)
+        (0..length)
             .map(|_| {
-                let idx = rng.gen_range(0..char_array.len());
-                char_array[idx] as char
+                char_array.choose(&mut rng).unwrap().to_owned() as char
             })
-            .collect();
-        password
+            .collect()
     }
 
     fn generate_char_array(&self) -> Vec<u8> {

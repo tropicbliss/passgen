@@ -33,24 +33,24 @@ impl Args {
         let mut rng = thread_rng();
         (0..length)
             .map(|_| {
-                char_array.choose(&mut rng).unwrap().to_owned() as char
+                char_array.choose(&mut rng).unwrap().to_owned()
             })
             .collect()
     }
 
-    fn generate_char_array(&self) -> Vec<u8> {
+    fn generate_char_array(&self) -> Vec<char> {
         const ALPHA: &str = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
         const NUMBERS: &str = "0123456789";
         const SYMBOLS: &str = "!@#$%^&*_-+=";
         let has_numbers = !self.no_numbers;
         let has_symbols = !self.no_symbols;
-        let mut chars = ALPHA.to_string();
+        let mut charset = ALPHA.to_string();
         if has_numbers {
-            chars.push_str(NUMBERS)
+            charset.push_str(NUMBERS)
         };
         if has_symbols {
-            chars.push_str(SYMBOLS)
+            charset.push_str(SYMBOLS)
         };
-        chars.into_bytes()
+        charset.chars().collect()
     }
 }

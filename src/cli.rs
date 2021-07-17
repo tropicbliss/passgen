@@ -42,8 +42,8 @@ impl Password {
             .append(true)
             .create(true)
             .open("passwords.txt")?;
-        let write_data = format!("{}{}", self.password, LINE_ENDING);
-        file.write_all(write_data.as_bytes())?;
+        let write_data = format!("{}{}", self.password, LINE_ENDING).into_bytes();
+        file.write_all(&write_data)?;
         Ok(())
     }
 }

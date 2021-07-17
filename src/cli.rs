@@ -24,9 +24,9 @@ impl Password {
 
     pub fn copy_to_clipboard(&self) -> Result<()> {
         let mut ctx: ClipboardContext =
-            ClipboardProvider::new().map_err(|_| anyhow!("Failed to open clipboard."))?;
+            ClipboardProvider::new().map_err(|_| anyhow!("Failed to open clipboard"))?;
         ctx.set_contents(self.password.clone())
-            .map_err(|_| anyhow!("Failed to set the clipboard contents."))?;
+            .map_err(|_| anyhow!("Failed to set the clipboard contents"))?;
         Ok(())
     }
 

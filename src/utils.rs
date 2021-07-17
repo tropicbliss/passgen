@@ -1,4 +1,4 @@
-use rand::{thread_rng, seq::SliceRandom};
+use rand::{seq::SliceRandom, thread_rng};
 use structopt::StructOpt;
 
 /// Simple Password Generator
@@ -32,9 +32,7 @@ impl Args {
         let char_array = self.generate_char_array();
         let mut rng = thread_rng();
         (0..password_len)
-            .map(|_| {
-                char_array.choose(&mut rng).unwrap().to_owned() as char
-            })
+            .map(|_| char_array.choose(&mut rng).unwrap().to_owned() as char)
             .collect()
     }
 

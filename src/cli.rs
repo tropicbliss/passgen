@@ -1,12 +1,9 @@
 use ansi_term::Colour::{Blue, Green, Yellow};
 use ansi_term::Style;
+use anyhow::{bail, Result};
 use copypasta_ext::prelude::*;
 use copypasta_ext::x11_fork::ClipboardContext;
-use std::{
-    fs::OpenOptions,
-    io::Write,
-};
-use anyhow::{bail, Result};
+use std::{fs::OpenOptions, io::Write};
 
 pub struct Password {
     password: String,
@@ -29,7 +26,7 @@ impl Password {
         let mut ctx = ClipboardContext::new().unwrap();
         match ctx.set_contents(self.password.clone()) {
             Ok(_) => Ok(()),
-            Err(e) => bail!(e)
+            Err(e) => bail!(e),
         }
     }
 

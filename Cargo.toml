@@ -6,11 +6,10 @@ edition = "2018"
 license = "MIT"
 description = "Simple password generator"
 
-# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
-
 [dependencies]
 ansi_term = "0.12"
-copypasta = "0.7"
+anyhow = "1.0"
+copypasta-ext = "0.3"
 rand = "0.8"
 structopt = "0.3"
 

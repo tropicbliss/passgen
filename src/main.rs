@@ -22,7 +22,7 @@ fn main() -> Result<()> {
 
     // Copy to clipboard
     cli.copy_to_clipboard()
-        .with_context(|| "Error copying to keyboard")?;
+        .with_context(|| "Error copying to clipboard")?;
 
     // Output generated password
     cli.print_generated_password();

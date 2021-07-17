@@ -6,7 +6,7 @@ use std::{
     fs::OpenOptions,
     io::Write,
 };
-use anyhow::Result;
+use anyhow::{bail, Result};
 
 pub struct Password {
     password: String,
@@ -25,9 +25,12 @@ impl Password {
         );
     }
 
-    pub fn copy_to_clipboard(&self) {
+    pub fn copy_to_clipboard(&self) -> Result<()> {
         let mut ctx = ClipboardContext::new().unwrap();
-        ctx.set_contents(self.password.clone()).expect("Error copying to clipboard");
+        match ctx.set_contents(self.password.clone()) {
+            Ok(_) => Ok(()),
+            Err(e) => bail!(e)
+        }
     }
 
     pub fn save_password(&self) -> Result<()> {

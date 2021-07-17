@@ -2,6 +2,7 @@
 
 mod cli;
 mod utils;
+
 use anyhow::{Context, Result};
 
 fn main() -> Result<()> {

@@ -12,13 +12,6 @@ fn main() -> Result<()> {
     let password = options.generate_password();
 
     let cli = cli::Password::new(password);
-    if options.save {
-        // Save to file
-        cli.save_password()
-            .with_context(|| "Failed to write password to passwords.txt")?;
-
-        cli::save_success_prompt();
-    }
 
     // Copy to clipboard
     cli.copy_to_clipboard()
@@ -27,6 +20,13 @@ fn main() -> Result<()> {
     // Output generated password
     cli.print_generated_password();
     cli::clipboard_success_prompt();
+
+    // Save to file
+    if options.save {
+        cli.save_password()
+            .with_context(|| "Failed to write password to passwords.txt")?;
+        cli::save_success_prompt();
+    }
 
     Ok(())
 }

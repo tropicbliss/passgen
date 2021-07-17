@@ -1,7 +1,8 @@
 mod cli;
 mod utils;
+use anyhow::{Context, Result};
 
-fn main() {
+fn main() -> Result<()> {
     let options = utils::Args::parse_args();
 
     // Get generated password
@@ -18,8 +19,9 @@ fn main() {
     cli::clipboard_success_prompt();
     if options.save {
         // Save to file
-        cli.save_password().expect("error saving password to file");
+        cli.save_password().with_context(|| "Failed to write password to passwords.txt")?;
 
         cli::save_success_prompt();
     }
+    Ok(())
 }

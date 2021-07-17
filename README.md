@@ -1,6 +1,6 @@
 # passgen
 
-A port of [@bradtraversy](https://github.com/bradtraversy)'s [passgen](https://github.com/bradtraversy/passgen) project in Rust.
+A port of [@bradtraversy](https://github.com/bradtraversy)'s [passgen](https://github.com/bradtraversy/passgen) project in idiomatic Rust.
 
 ## Usage
 

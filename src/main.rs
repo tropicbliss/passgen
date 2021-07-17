@@ -12,15 +12,6 @@ fn main() -> Result<()> {
     let password = options.generate_password();
 
     let cli = cli::Password::new(password);
-
-    // Output generated password
-    cli.print_generated_password();
-
-    // Copy to clipboard
-    cli.copy_to_clipboard()
-        .with_context(|| "Error copying to keyboard")?;
-
-    cli::clipboard_success_prompt();
     if options.save {
         // Save to file
         cli.save_password()
@@ -28,5 +19,14 @@ fn main() -> Result<()> {
 
         cli::save_success_prompt();
     }
+
+    // Copy to clipboard
+    cli.copy_to_clipboard()
+        .with_context(|| "Error copying to keyboard")?;
+
+    // Output generated password
+    cli.print_generated_password();
+    cli::clipboard_success_prompt();
+
     Ok(())
 }

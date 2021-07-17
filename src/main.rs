@@ -14,7 +14,7 @@ fn main() -> Result<()> {
     cli.print_generated_password();
 
     // Copy to clipboard
-    cli.copy_to_clipboard();
+    cli.copy_to_clipboard().with_context(|| "Error copying to keyboard")?;
 
     cli::clipboard_success_prompt();
     if options.save {

@@ -1,8 +1,8 @@
 use ansi_term::Colour::{Blue, Green, Yellow};
 use ansi_term::Style;
-use anyhow::{bail, Result};
-use copypasta_ext::prelude::*;
-use copypasta_ext::x11_fork::ClipboardContext;
+use anyhow::{anyhow, Result};
+use clipboard_ext::prelude::*;
+use clipboard_ext::x11_fork::ClipboardContext;
 use std::{fs::OpenOptions, io::Write};
 
 pub struct Password {
@@ -23,11 +23,11 @@ impl Password {
     }
 
     pub fn copy_to_clipboard(&self) -> Result<()> {
-        let mut ctx = ClipboardContext::new().unwrap();
-        match ctx.set_contents(self.password.clone()) {
-            Ok(_) => Ok(()),
-            Err(e) => bail!(e),
-        }
+        let mut ctx: ClipboardContext =
+            ClipboardProvider::new().map_err(|_| anyhow!("Failed to open clipboard."))?;
+        ctx.set_contents(self.password.clone())
+            .map_err(|_| anyhow!("Failed to set the clipboard contents."))?;
+        Ok(())
     }
 
     pub fn save_password(&self) -> Result<()> {

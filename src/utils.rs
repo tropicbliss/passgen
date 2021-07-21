@@ -24,7 +24,7 @@ pub struct Args {
 
 impl Args {
     pub fn parse_args() -> Self {
-        Args::from_args()
+        Self::from_args()
     }
 
     pub fn generate_password(&self) -> String {

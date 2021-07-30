@@ -44,11 +44,11 @@ impl Args {
         let has_symbols = !self.no_symbols;
         let mut charset = ALPHA.to_string();
         if has_numbers {
-            charset.push_str(NUMBERS)
-        };
+            charset.push_str(NUMBERS);
+        }
         if has_symbols {
-            charset.push_str(SYMBOLS)
-        };
+            charset.push_str(SYMBOLS);
+        }
         charset.into_bytes()
     }
 }
